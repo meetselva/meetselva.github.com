@@ -4,15 +4,15 @@ $(function () {
 		
 		if ($(this).hasClass('active')) {
 			$('#slide_container' + ' .' + this.id + '_content').slideUp();
-			$(this).removeClass('active ui-state-active');
+			$(this).removeClass('active'); // ui-state-active');
 			return;
 		}
 		
 		$('#slide_container .slide_content').not('.' + this.id + '_content').slideUp();
 		$('#slide_container' + ' .' + this.id + '_content').slideDown();
 		
-		$('#slide_items li').removeClass('active ui-state-active');
-		$(this).addClass('active ui-state-active');	
+		$('#slide_items li').removeClass('active'); // ui-state-active');
+		$(this).addClass('active'); // ui-state-active');	
 
 	});
 	

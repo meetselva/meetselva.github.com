@@ -6,7 +6,7 @@
 	
 		<title>meetselva</title>
 		<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
-		<link type="text/css" rel="stylesheet" media="all" href="http://code.jquery.com/ui/1.8.24/themes/black-tie/jquery-ui.css" />
+		<link type="text/css" rel="stylesheet" media="all" href="http://code.jquery.com/ui/1.10.2/themes/black-tie/jquery-ui.css" />
 		<link type="text/css" rel="stylesheet" media="all" href="css/prettify.css" />
 		<link type="text/css" rel="stylesheet" media="all" href="css/styles.css" />
 
@@ -21,11 +21,13 @@
 			#example_d1 { width: 1150px; } 
 			
 			body { line-height: 1.5em; }
+			
+			#projects { font-size: 0.9em; margin: 10px;  }
 		</style>
 
 		<script>
 			$(function () {
-				
+				$('#projects').tabs();
 			});
 			
 		</script>
@@ -39,8 +41,7 @@
 	    
 		<div id="header" class="ui-widget-header">
 			<div id="header-content">
-				<h2>meetselva</h2>
-				<h4 class="strech">my projects</h4>
+				<h2>meetselva</h2>				
 			</div>	
 		</div>
 		<div id="slidebar" class="ui-widget-content">
@@ -81,19 +82,42 @@
 				</div>
 			</div>		
 		</div>
-		<div class="clear"></div>
-		<div id="page-content" class="ui-widget-content">
-		<h4 style="height: 100px">Sorry, but this page is under construction. Please check back later.</h4>			
-			<div id="main-content" style="display:none;">
-				<h2>My Projects</h2>
-				<p>...
-				</p>				
-				<h2>About Me</h2>
-				<p>
-					.. 
-				</p>
-				<h2>Other Interests</h2>
-				<p>...</p>
+		<div id="page-content">
+			<div id="main-content" >
+				<div  class="ui-widget-content sections ">
+					<h2>My Projects</h2>
+					<p>Below are some of my works.. Most of them are in their beta stage. Hopefully I could find some time to complete them,</p>
+					<div id="projects">
+						<ul>
+							<li><a class="noglow" href="#attrchange-ln">attrchange</a></li>
+							<li><a class="noglow" href="#fxtable-ln">fixed-table-rows-cols</a></li>
+							<li><a class="noglow" href="#combobox-ln">combobox</a></li>
+							<li><a class="noglow" href="#mutationobs-ln">mutationobserver</a></li>
+						</ul>
+						<div id="attrchange-ln">
+							<p><a class="strong" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" target="_new" >attrchange</a> is a simple jQuery function to bind a listener function on attribute change of an element. The handler function is triggered when any attribute such as id, class, style, e.t.c is added or updated or modified to the element.</p>
+						</div>
+						<div id="fxtable-ln">
+							<p><a class="strong" href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" target="_new" >fixed-table-rows-cols</a> is a jQuery plug-in for converting a well formatted HTML table to a scrollable table with fixed table header and columns. This is a light weight plugin for rendering HTML table to an scrollable table the fixed header and configurable number of fixed columns.</p>
+						</div>
+						<div id="combobox-ln">
+							<p><a class="strong" href="https://github.com/meetselva/combobox/blob/master/combobox.js" target="_new" >combox</a> is a jQuery plugin to render a user friendly editable drop down with filtering option.</p>
+						</div>
+						<div id="mutationobs-ln">
+							<p><a class="strong" href="https://github.com/meetselva/mutationobserver/blob/master/demo.html" target="_new" >mutationobserver</a> is a simple jQuery function to conveniently use mutation object.</p>
+						</div>
+					</div>
+				</div>
+				<div  class="ui-widget-content sections ">
+					<h2>About Me</h2>
+					<p>
+						My name is Selvakumar Arumugam and I am a web developer from Lyndhurst, NJ. I am currently interested in HTML5, CSS3, JavaScript and jQuery library. 
+					</p>
+				</div>
+				<!-- div  class="ui-widget-content sections ">
+					<h2>Other Interests</h2>
+					<p>...</p>
+				</div-->
 			</div>			
 		</div>
 		<div id="footer">
