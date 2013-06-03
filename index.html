@@ -1,127 +1,129 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-	<head>  
-		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-		<meta http-equiv="cache-control" content="no-cache" />
-	
-		<title>meetselva</title>
-		<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
-		<link type="text/css" rel="stylesheet" media="all" href="http://code.jquery.com/ui/1.10.2/themes/black-tie/jquery-ui.css" />
-		<link type="text/css" rel="stylesheet" media="all" href="css/prettify.css" />
-		<link type="text/css" rel="stylesheet" media="all" href="css/styles.css" />
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-	  	<script src="http://code.jquery.com/jquery.min.js"></script>
-	  	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
-		<script src="js/global.js" type="text/javascript"></script>
-		<script src="js/prettify.js" type="text/javascript"></script>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-		<style>
-			#main-content { overflow: hidden; }
-			
-			#example_d1 { width: 1150px; } 
-			
-			body { line-height: 1.5em; }
-			
-			#projects { font-size: 0.9em; margin: 10px; min-height: 250px; }
-		</style>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/cssmenu.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" ></script>
+		<script src="js/vendor/jquery.carouFredSel-6.2.1.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
 
 		<script>
 			$(function () {
-				$('#projects').tabs();
+				$('#myprojects').carouFredSel({
+			        circular: false,
+					infinite: false,
+				    auto    : false,
+					prev	: {	
+						button	: "#proj_prev",
+						key		: "left"
+					},
+					next	: { 
+						button	: "#proj_next",
+						key		: "right"
+					},
+					pagination	: "#proj_pag"
+
+			    }); 
 			});
-			
 		</script>
-	</head>
-	<body onload="prettyPrint()">
-		<div id="c_overlay"></div>
-		<div id="c_helper"></div>
+    </head>
+    <body>
+		<div id="redesign" style="padding: 2px; position: fixed; top: 0px; background-color: #FF9900; color: white; font-weight: bold; width: 100%; text-align: center;"><h1>This site is under construction, please try again later.</h1></div>
+		<div id="page_container">
+			<!--[if lt IE 7]>
+				<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+			<![endif]-->			
+			<header>
+				<div id="header">
+					<h1>meetselva</h1>
+				</div>
+			</header>
+			<nav>
+				<div id='top_nav'>
+					<!-- menu credits: http://cssmenumaker.com  -->
+					<ul>
+					   <li class='active'><a href='index.html'><span>Home</span></a></li>
+					   <li class='has-sub'><a href='#'><span>Projects</span></a>
+						  <ul>
+							 <li><a href='#'><span>attrchange</span></a></li>
+							 <li class='last'><a href='#'><span>fixed table</span></a></li>
+						  </ul>
+					   </li>
+					   <li><a href='#'><span>About</span></a></li>
+					   <li class='last has-sub'><a href='#'><span>Theme</span></a>
+						<ul>
+							 <li><a href='#'><span>Color it down</span></a></li>
+							 <li class='last'><a href='#'><span>Turn it down</span></a></li>
+						  </ul>
+					   </li>
+					</ul>
+				</div>
+			</nav>
+			<section>
+				<h2 class="headline">My Projects</h2>
+				<div class="image_carousel">
+					<ul id="myprojects">
+						<li>
+							<h3>attrchange</h3>
+							<article>
+							<p><a target="_new" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" class="strong glow">attrchange</a> is a simple jQuery function to bind a listener function on attribute change of an element. The handler function is triggered when any attribute such as id, class, style, e.t.c is added or updated or modified to the element.							</p>
+							</article>
+						</li>
+						<li>
+							<h3>fixed table</h3>
+							<article>
+							<p><a target="_new" href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" class="strong glow">fixed-table-rows-cols</a> is a jQuery plug-in for converting a well formatted HTML table to a scrollable table with fixed table header and columns. This is a light weight plugin for rendering HTML table to an scrollable table the fixed header and configurable number of fixed columns.							</p>
+							</article>
+						</li>
+						<li>
+							<h3>combobox</h3>
+							<article>
+							<p><a target="_new" href="https://github.com/meetselva/combobox/blob/master/combobox.js" class="strong glow">combox</a> is a jQuery plugin to render a user friendly editable drop down with filtering option.</p>
+							</article>
+						</li>
+						<li>
+							<h3>mutation observer</h3>
+							<article>
+							<p><a target="_new" href="https://github.com/meetselva/mutationobserver/blob/master/demo.html" class="strong glow">mutationobserver</a> is a simple jQuery function to conveniently use mutation object.</p>
+							</article>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+					<a class="prev" id="proj_prev" href="#"><span>prev</span></a>
+					<a class="next" id="proj_next" href="#"><span>next</span></a>
+					<div class="pagination" id="proj_pag"></div>
+				</div>
+
+			</section>
+			<footer>&copy; Copyright 2013 Selvakumar Arumugam</footer>
+		</div>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 		<script>
-			try { $('#c_overlay').css({height: $(document).height(), width: $(document).width()}); } catch (e) {	}
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-41430365-1', 'meetselva.github.io');
+		  ga('send', 'pageview');
+
 		</script>
-	    
-		<div id="header" class="ui-widget-header">
-			<div id="header-content">
-				<h2>meetselva</h2>				
-			</div>	
-		</div>
-		<div id="slidebar" class="ui-widget-content">
-			<ul id="slide_items">
-				<li id="si_themes"><a class="glow" href="javascript: void(0)">Themes</a></li>
-			</ul>
-			<div id="slide_container">
-				<div class="si_themes_content slide_content hidden">
-					<h4>Select UI Theme</h4>
-					<div id="theme-list">
-						<ul>
-							<li class="themes-el" data-theme="cupertino">cupertino</li>
-							<li class="themes-el" data-theme="hot-sneaks">hot-sneaks</li>
-							<li class="themes-el" data-theme="smoothness">smoothness</li>
-							<li class="themes-el" data-theme="pepper-grinder">pepper-grinder</li>
-							<li class="themes-el" data-theme="ui-lightness">ui-lightness</li>
-							<li class="themes-el" data-theme="ui-darkness">ui-darkness</li>
-							<li class="themes-el ui-state-highlight" data-theme="black-tie">black-tie</li>
-							<li class="themes-el" data-theme="blitzer">blitzer</li>
-							<li class="themes-el" data-theme="dark-hive">dark-hive</li>
-							<li class="themes-el" data-theme="eggplant">eggplant</li>
-							<li class="themes-el" data-theme="excite-bike">excite-bike</li>
-							<li class="themes-el" data-theme="flick">flick</li>		
-							<li class="themes-el" data-theme="humanity">humanity</li>	
-							<li class="themes-el" data-theme="le-frog">le-frog</li>	
-							<li class="themes-el" data-theme="mint-choc">mint-choc</li>	
-							<li class="themes-el" data-theme="overcast">overcast</li>
-							<li class="themes-el" data-theme="redmond">redmond</li>
-							<li class="themes-el" data-theme="south-street">south-street</li>
-							<li class="themes-el" data-theme="start">start</li>				
-							<li class="themes-el" data-theme="sunny">sunny</li>	
-							<li class="themes-el" data-theme="swanky-purse">swanky-purse</li>			
-							<li class="themes-el" data-theme="trontastic">trontastic</li>		
-							<li class="themes-el" data-theme="vader">vader</li>
-							<li class="themes-el" data-theme="dot-luv">dot-luv</li>
-						</ul>	
-					</div>
-				</div>
-			</div>		
-		</div>
-		<div id="page-content">
-			<div id="main-content" >
-				<div  class="ui-widget-content sections ">
-					<h2>My Projects</h2>
-					<p>Below are some of my works.. Most of them are in their beta stage. Hopefully I could find some time to complete them,</p>
-					<div id="projects">
-						<ul>
-							<li><a href="#attrchange-ln">attrchange</a></li>
-							<li><a href="#fxtable-ln">fixed-table-rows-cols</a></li>
-							<li><a href="#combobox-ln">combobox</a></li>
-							<li><a href="#mutationobs-ln">mutationobserver</a></li>
-						</ul>
-						<div id="attrchange-ln">
-							<p><a class="strong glow" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" target="_new" >attrchange</a> is a simple jQuery function to bind a listener function on attribute change of an element. The handler function is triggered when any attribute such as id, class, style, e.t.c is added or updated or modified to the element.</p>
-						</div>
-						<div id="fxtable-ln">
-							<p><a class="strong glow" href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" target="_new" >fixed-table-rows-cols</a> is a jQuery plug-in for converting a well formatted HTML table to a scrollable table with fixed table header and columns. This is a light weight plugin for rendering HTML table to an scrollable table the fixed header and configurable number of fixed columns.</p>
-						</div>
-						<div id="combobox-ln">
-							<p><a class="strong glow" href="https://github.com/meetselva/combobox/blob/master/combobox.js" target="_new" >combox</a> is a jQuery plugin to render a user friendly editable drop down with filtering option.</p>
-						</div>
-						<div id="mutationobs-ln">
-							<p><a class="strong glow" href="https://github.com/meetselva/mutationobserver/blob/master/demo.html" target="_new" >mutationobserver</a> is a simple jQuery function to conveniently use mutation object.</p>
-						</div>
-					</div>
-				</div>
-				<div  class="ui-widget-content sections ">
-					<h2>About Me</h2>
-					<p>
-						My name is Selvakumar Arumugam and I am a web developer from Lyndhurst, NJ. I am currently interested in HTML5, CSS3, JavaScript and jQuery library. 
-					</p>
-				</div>
-				<!-- div  class="ui-widget-content sections ">
-					<h2>Other Interests</h2>
-					<p>...</p>
-				</div-->
-			</div>			
-		</div>
-		<div id="footer">
-			<div class="text-align-right">Maintained by <a class="glow" href="https://github.com/meetselva">Selvakumar Arumugam</a></div>
-		</div>
-	</body>
+    </body>
 </html>
