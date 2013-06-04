@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>meetselva - Home page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -26,32 +26,6 @@
 
 		<script>
 			$(function () {
-				$('#myprojects').carouFredSel({
-			        circular: false,
-					infinite: false,
-				    auto    : false,
-					prev	: {	
-						button	: "#proj_prev",
-						key		: "left"
-					},
-					next	: { 
-						button	: "#proj_next",
-						key		: "right"
-					},
-					pagination	: "#proj_pag"
-			    }); 
-				
-				var $container = $('#page_container'); 
-				$('.lights-ctrl').click(function () {
-					if ($container.hasClass("lights_on")) {
-						$container.removeClass('lights_on').addClass('lights_off');
-						$(this).text('Lights On');
-					} else {
-						$container.removeClass('lights_off').addClass('lights_on');
-						$(this).text('Lights Off');
-					}
-				});
-				
 				var $html = $('html');
 				$('.bg-ctrl').click(function () {
 					if ($html.hasClass('bg1_illusion')) {
@@ -66,7 +40,7 @@
 		</script>
     </head>
     <body>
-		<div id="redesign" style="padding: 2px; position: fixed; top: 0px; background-color: #FF9900; color: white; font-weight: bold; width: 100%; text-align: center; z-index: 1001;"><h1>This site is under construction, please try again later.</h1></div>
+		<!--  div id="redesign" style="padding: 2px; position: fixed; top: 0px; background-color: #FF9900; color: white; font-weight: bold; width: 100%; text-align: center; z-index: 1001;"><h1>This site is under construction, please check back later.</h1></div -->
 		<div id="page_container" class="lights">
 			<!--[if lt IE 7]>
 				<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -81,59 +55,94 @@
 					<!-- menu credits: http://cssmenumaker.com  -->
 					<ul>
 					   <li class='active'><a href='index.html'><span>Home</span></a></li>
-					   <li class='has-sub'><a href='#'><span>Projects</span></a>
+					   <li class='has-sub'><a href='projects/index.html'><span>Projects</span></a>
 						  <ul>
 							 <li><a href='#'><span>attrchange</span></a></li>
-							 <li class='last'><a href='#'><span>fixed table</span></a></li>
+							 <li><a href='#'><span>fixed row col table</span></a></li>
+							 <li class='last'><a href='#'><span>combobox</span></a></li>
 						  </ul>
 					   </li>
 					   <li><a href='#'><span>About</span></a></li>
-					   <li class='last has-sub'><a href='#'><span>Theme</span></a>
+					   <!-- li class='last has-sub'><a href='#'><span>Theme</span></a>
 						<ul>
 							 <li><a href='#' class="bg-ctrl"><span>It's a beautiful day</span></a></li>
 							 <li class='last'><a href='#' class="lights-ctrl"><span>Lights Off</span></a></li>
 						  </ul>
-					   </li>
+					   </li -->
 					</ul>
 				</div>
 			</nav>
 			<section>
-				<h2 class="headline">My Projects</h2>
-				<div class="image_carousel">
-					<ul id="myprojects">
-						<li>
-							<h3>attrchange</h3>
-							<article>
-							<p><a target="_new" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" class="strong glow">attrchange</a> is a simple jQuery function to bind a listener function on attribute change of an element. The handler function is triggered when any attribute such as id, class, style, e.t.c is added or updated or modified to the element.							</p>
-							</article>
-						</li>
-						<li>
-							<h3>fixed table</h3>
-							<article>
-							<p><a target="_new" href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" class="strong glow">fixed-table-rows-cols</a> is a jQuery plug-in for converting a well formatted HTML table to a scrollable table with fixed table header and columns. This is a light weight plugin for rendering HTML table to an scrollable table the fixed header and configurable number of fixed columns.							</p>
-							</article>
-						</li>
-						<li>
-							<h3>combobox</h3>
-							<article>
-							<p><a target="_new" href="https://github.com/meetselva/combobox/blob/master/combobox.js" class="strong glow">combox</a> is a jQuery plugin to render a user friendly editable drop down with filtering option.</p>
-							</article>
-						</li>
-						<li>
-							<h3>mutation observer</h3>
-							<article>
-							<p><a target="_new" href="https://github.com/meetselva/mutationobserver/blob/master/demo.html" class="strong glow">mutationobserver</a> is a simple jQuery function to conveniently use mutation object.</p>
-							</article>
-						</li>
-					</ul>
-					<div class="clearfix"></div>
-					<a class="prev" id="proj_prev" href="#"><span>prev</span></a>
-					<a class="next" id="proj_next" href="#"><span>next</span></a>
-					<div class="pagination" id="proj_pag"></div>
-				</div>
-
+				<div style="float: right; margin: 15px; "><img width="128" height="128" alt="Selvakumar Arumugam" src="http://www.gravatar.com/avatar/f942aacf8351fb43d69e4e230f406fe1?s=128&amp;d=identicon&amp;r=PG"></div>
+				<h3>meet Selva</h3>
+				<article>
+				<p>
+					My name is Selvakumar Arumuam and I am a computer progrmmer with Java/J2EE background. I am experienced in web technologies and 
+					currently exploring the world of Javascript. <!-- We all write small utililty code/components/plugins throughout our experience but everything vanishes 
+					as we move on to different projects.  -->
+				</p>
+				<p>
+					In last couple of years, I had opportunity to work extensively in Javascript and jQuery which enabled me to write couple of plugins in jQuery. 
+					This is my plugin home page and below are some of my works showcased in <a href="https://github.com/meetselva">Github</a>,
+				</p>
+				</article>
+				<!-- p> in <a href="https://github.com/meetselva">Github</a>. 
+					
+					Recently I wrote my first plugin <a href="">attrchange</a>, ever since I had been trying to write different components.   
+				</p-->
 			</section>
-			<footer>&copy; Copyright 2013 Selvakumar Arumugam</footer>
+			<section>
+				<h3>Plugins</h3>
+				<ul>
+					<li class="highlight-border">
+						<i class="icon-arrow-right"></i>
+						<a target="_new" class="prj_links" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" class="strong glow">attrchange</a> 
+						is a simple jQuery function to bind a listener function on attribute change of an element. The handler function is triggered when any 
+						attribute such as id, class, style, e.t.c is added or updated or modified to the element.
+						<ul class="demoNdocs">
+							<li><a href="http://meetselva.github.com/attrchange/">Demo & Documentation</a></li>
+							<li><a href="https://github.com/meetselva/attrchange/issues">Report an issue</a></li>
+						</ul>
+					</li>
+					<li class="highlight-border">
+						<i class="icon-arrow-right"></i>
+						<a target="_new" class="prj_links" href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" class="strong glow">fixed-table-rows-cols</a> 
+						is a jQuery plug-in for converting a well formatted HTML table to a scrollable table with fixed table header and columns. This is a light weight 
+						plugin for rendering HTML table to an scrollable table the fixed header and fixed columns.
+						<ul class="demoNdocs">
+							<li><a href="http://meetselva.github.com/fixed-table-rows-cols/">Demo & Documentation</a></li>
+							<li><a href="https://github.com/meetselva/fixed-table-rows-cols/issues">Report an issue</a></li>
+						</ul>						
+					</li>
+					<li class="highlight-border">
+						<i class="icon-arrow-right"></i>
+						<a target="_new" class="prj_links" href="https://github.com/meetselva/combobox/blob/master/combobox.js" class="strong glow">combox</a> 
+						is a jQuery plugin to render a user friendly drop down with customizable filtering option.
+						<ul class="demoNdocs">
+							<li><a href="http://meetselva.github.io/combobox/">Demo & Documentation</a></li>
+							<li><a href="https://github.com/meetselva/combobox/issues">Report an issue</a></li>
+						</ul>
+					</li>
+					<!-- li><a target="_new" href="https://github.com/meetselva/mutationobserver/blob/master/demo.html" class="strong glow">mutationobserver</a> is a simple jQuery function to conveniently use mutation object.</li -->
+				</ul>
+			</section>			
+			<footer>				
+				<a href="http://www.w3.org/html/logo/">
+					<img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="85" height="30" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+				</a>				
+				&copy; Copyright 2013 Selvakumar Arumugam				
+			</footer>
+			<div id="overlay"></div>
+			<script>			
+				$('#overlay').css('height', $(window).height());
+				
+				$(function () {
+					
+					$('#overlay').animate({'opacity': 0}, 1000, function () {
+						$(this).remove();
+					});
+				});
+			</script>
 		</div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 		<script>
