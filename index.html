@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 bg1_illusion"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 bg1_illusion"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9 bg1_illusion"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js bg1_illusion"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -39,14 +39,35 @@
 						key		: "right"
 					},
 					pagination	: "#proj_pag"
-
 			    }); 
+				
+				var $container = $('#page_container'); 
+				$('.lights-ctrl').click(function () {
+					if ($container.hasClass("lights_on")) {
+						$container.removeClass('lights_on').addClass('lights_off');
+						$(this).text('Lights On');
+					} else {
+						$container.removeClass('lights_off').addClass('lights_on');
+						$(this).text('Lights Off');
+					}
+				});
+				
+				var $html = $('html');
+				$('.bg-ctrl').click(function () {
+					if ($html.hasClass('bg1_illusion')) {
+						$html.addClass('bg2_house').removeClass('bg1_illusion');
+						$(this).text('Color it up');
+					} else {
+						$html.addClass('bg1_illusion').removeClass('bg2_house');
+						$(this).text('Tone it down');
+					}
+				});
 			});
 		</script>
     </head>
     <body>
-		<div id="redesign" style="padding: 2px; position: fixed; top: 0px; background-color: #FF9900; color: white; font-weight: bold; width: 100%; text-align: center;"><h1>This site is under construction, please try again later.</h1></div>
-		<div id="page_container">
+		<div id="redesign" style="padding: 2px; position: fixed; top: 0px; background-color: #FF9900; color: white; font-weight: bold; width: 100%; text-align: center; z-index: 1001;"><h1>This site is under construction, please try again later.</h1></div>
+		<div id="page_container" class="lights">
 			<!--[if lt IE 7]>
 				<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 			<![endif]-->			
@@ -69,8 +90,8 @@
 					   <li><a href='#'><span>About</span></a></li>
 					   <li class='last has-sub'><a href='#'><span>Theme</span></a>
 						<ul>
-							 <li><a href='#'><span>Color it down</span></a></li>
-							 <li class='last'><a href='#'><span>Turn it down</span></a></li>
+							 <li><a href='#' class="bg-ctrl"><span>It's a beautiful day</span></a></li>
+							 <li class='last'><a href='#' class="lights-ctrl"><span>Lights Off</span></a></li>
 						  </ul>
 					   </li>
 					</ul>

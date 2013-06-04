@@ -93,9 +93,26 @@ textarea {
    custom styles
    ========================================================================== */
 html { font:10pt Arial, Helvetica, sans-serif; }
+
+html.bg1_illusion { 
+  background: url(../img/background-illusionapparel.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html.bg2_house { 	
+  background: url(../img/background-house.jpg) no-repeat center center fixed;  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #header h1 {  letter-spacing: 3px; padding: 2px; }
 
-#page_container { margin: 5px auto; width: 800px; padding: 5px;  }
+#page_container { margin: 5px auto; width: 800px; padding: 5px; background-color: transparent; background-color: #fff;}
 
 footer { padding: 5px; }
 
@@ -111,14 +128,16 @@ section { padding: 5px 15px; }
 ul#myprojects li { height: 400px; }
 
 
+.lights {
+    -moz-transition: opacity 3s;
+    -webkit-transition: opacity 3s;
+    -o-transition: opacity 3s;
+    transition: opacity 3s;
+}
 
-
-
-
-
-
-
-
+.lights_on {  opacity: 1; filter: alpha(opacity=100); zoom: 1; }
+.lights_off {  opacity: 0.6; filter: alpha(opacity=60); zoom: 1; }
+ 
 
 /* ==========================================================================
    Helper classes
