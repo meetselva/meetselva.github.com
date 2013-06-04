@@ -128,7 +128,8 @@ section { padding: 0px 5px; }
 ul { list-style: none; padding: 0px 10px; }
 ul li { line-height: 1.6em; margin: 5px; }
 
-ul#myprojects li { height: 400px; }
+.project_carousel { width: 790px; }
+ul#myprojects li { height: 400px; width: 650px; border-radius: 10px; border: 1px soild #c2c2c2; padding: 5px; }
 
 ul.demoNdocs { margin: 0px; padding: 0px; }
 ul.demoNdocs li { display: inline-block; margin-left: 10px; }

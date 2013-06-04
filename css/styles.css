@@ -12,21 +12,21 @@
 	float: left;
 }
 a.prev, a.next {
-	background: url(../images/miscellaneous_sprite.png) no-repeat transparent;
-	width: 45px;
-	height: 50px;
+	background: url(../img/icon-prev-next_sprite.png) no-repeat transparent;
+	width: 70px;
+	height: 65px;
 	display: block;
 	position: absolute;
-	top: 85px;
+	top: 185px;
 }
-a.prev {			left: -22px;
-					background-position: 0 0; }
-a.prev:hover {		background-position: 0 -50px; }
-a.prev.disabled {	background-position: 0 -100px !important;  }
-a.next {			right: -22px;
-					background-position: -50px 0; }
-a.next:hover {		background-position: -50px -50px; }
-a.next.disabled {	background-position: -50px -100px !important;  }
+a.prev {			left: -92px;
+					background-position: 0 -70px;; }
+a.prev:hover {		background-position: 0 -70px; }
+a.prev.disabled {	background-position: 0 -70px; !important;  }
+a.next {			right: -52px;
+					background-position: -90px -70px;; }
+a.next:hover {		background-position: -90px -70px; }
+a.next.disabled {	background-position: -90px -70px; !important;  }
 a.prev.disabled, a.next.disabled {
 	cursor: default;
 }
