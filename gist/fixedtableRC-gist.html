@@ -1,0 +1,43 @@
+<div>
+	<div>
+		<div style="float: left; width: 75%; padding: 10px;">
+		<p>
+			<a href="https://github.com/meetselva/fixed-table-rows-cols/blob/master/fixed_table_rc.js" class="hl_link">fixedTableRC</a> is a 
+			jQuery plug-in for converting a well formatted HTML table to a scrollable table 
+			with fixed table header and columns. This is a light weight plugin for rendering HTML table to an scrollable table 
+			the fixed header and configurable number of fixed columns. It is still in an early stages, but the basic features are available and tested fine.
+		</p>
+		<h3>What is a scrollable table?</h3>
+		<p>A scrollable table is nothing but a simple HTML table with scrollbars. We can create a scrollable table by placing the html table inside a div and 
+		style the div with fixed height say <code>height: 300px</code> and <code>overflow:auto</code>. Now The table content is intact and We can use scroller 
+		to view the entire table.
+		</p>
+		<p>
+		The issue with the scrollable table is that when you scroll vertically, the header would scroll top hiding from the view and when scrolling horizontally, 
+		the columns in left would scroll left hiding from the view. The goal of fixedTableRC plugin is to create a scrollable table with fixed header and fixed columns while scrolling horizontally and vertically.
+		</p>
+		</div>
+		<div class="note" style="float: right; width: 18%; margin: 0 5px; padding: 10px; min-height: 140px;">
+			<div style="padding-bottom: 10px; text-align: left;">
+			<iframe width="90px" height="20px" frameborder="0" scrolling="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=meetselva&repo=fixed-table-rows-cols&type=watch&count=true"></iframe>
+			<iframe width="90px" height="20px" frameborder="0" scrolling="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=meetselva&repo=fixed-table-rows-cols&type=fork&count=true"></iframe>
+			</div>
+			<div><div class="boldtext">License: </div><a href="https://raw.githubusercontent.com/meetselva/fixed-table-rows-cols/master/MIT-License.txt" class="">MIT License</a></div> 
+			<div><div class="boldtext">Demo and Documentation: </div><a href="https://github.com/meetselva/fixed-table-rows-cols/" class="">https://github.com/meetselva/fixed-table-rows-cols/</a></div>
+			<div><div class="boldtext">Release: </div><a href="https://github.com/meetselva/fixed-table-rows-cols/releases" class="">Fixed Table RC v1.0 (Oct 27 2014)</a></div>
+			<div><div class="boldtext">Feedback & Issues: </div><a href="https://github.com/meetselva/fixed-table-rows-cols/issues" class="">https://github.com/meetselva/attrchange/issues</a></div>
+			<div><div class="boldtext">Download: </div><a href="https://github.com/meetselva/fixed-table-rows-cols/archive/v1.0.zip" class="">Zip Download</a></div>
+		</div> 
+		<div style="clear:both;"></div>		
+	</div>
+	<div style="padding: 10px;">
+	<h3>Usage</h3>
+	<pre>
+$([selector]).fxdHdrCol({
+  fixedCols:  0, /* number to fixed columns */
+  width:     "100%", /* width of the table viewport */
+  height:    200,    /* height of the table viewport */
+  colModal: [ /*{width: 30, align: 'center'}*/ ] /* column modal */
+});</pre>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+/* carousel start */
+.project_carousel {
+	padding: 15px 0 15px 40px;
+	position: relative;
+}
+.project_carousel img {
+	border: 1px solid #ccc;
+	background-color: white;
+	padding: 9px;
+	margin: 7px;
+	display: block;
+	float: left;
+}
+a.prev, a.next {
+	background: url(../img/icon-prev-next_sprite.png) no-repeat transparent;
+	width: 70px;
+	height: 65px;
+	display: block;
+	position: absolute;
+	top: 185px;
+}
+a.prev {			left: -92px;
+					background-position: 0 -70px;; }
+a.prev:hover {		background-position: 0 -70px; }
+a.prev.disabled {	background-position: 0 -70px; !important;  }
+a.next {			right: -52px;
+					background-position: -90px -70px;; }
+a.next:hover {		background-position: -90px -70px; }
+a.next.disabled {	background-position: -90px -70px; !important;  }
+a.prev.disabled, a.next.disabled {
+	cursor: default;
+}
+
+a.prev span, a.next span {
+	display: none;
+}
+.pagination {
+	text-align: center;
+}
+.pagination a {
+	background: url(../images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+	width: 15px;
+	height: 15px;
+	margin: 0 5px 0 0;
+	display: inline-block;
+}
+.pagination a.selected {
+	background-position: -25px -300px;
+	cursor: default;
+}
+.pagination a span {
+	display: none;
+}
+.clearfix {
+	float: none;
+	clear: both;
+}
+
+/* carousel end */
