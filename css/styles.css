@@ -33,8 +33,6 @@ section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: righ
 .gists-section { margin: 0;  margin-top: 50px; }
 .gists-section .gist { margin: 0 auto; transition: background-color 1.5s ease 0s; background-color: white; padding: 10px; min-width: 750px; border-bottom: 2px solid #d2d2d2; position: relative; }
 .gists-section .gist:hover { background-color: #DCDCDC; }
-.gist-fork-ribbon { opacity: 0;}
-.gists-section .gist:hover .gist-fork-ribbon  { opacity: 100; }
 .gists-section .gist .gist-description { overflow: auto; }
 .gists-section .gist h3 { border-bottom: 1px solid #d2d2d2; margin-bottom: 10px; }
 .gists-section .gist .gist-description ul { margin-left: 20px; }
