@@ -35,7 +35,7 @@ var gistutil = {
 						template = template.replace(/{LAUNCH_DIV}/, "");
 					}
 					
-					gistutil.gistUI.push(template.replace(/{GIST_TITLE}/, (gist.title)?gistutil.gistTitle.replace(/{TITLE}/, gist.title):"")
+					gistutil.gistUI.push(template.replace(/{GIST_ID}/, gistArray[0]).replace(/{GIST_TITLE}/, (gist.title)?gistutil.gistTitle.replace(/{TITLE}/, gist.title):"")
 							.replace(/{DESC}/, $(xhr.responseText).html()));
 					
 					//dynamic JS injection
@@ -59,7 +59,7 @@ var gistutil = {
 		}
 	},
 	gistUI: null,
-	gistTemplate: '<div class="gist {LAUNCH_CSS}">' + 
+	gistTemplate: '<div class="gist" id="{GIST_ID}">' + 
 						'{GIST_TITLE}' + 
 						'<div class="gist-description">{DESC}</div>' +
 						'{LAUNCH_DIV}' +
