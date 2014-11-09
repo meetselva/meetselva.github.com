@@ -11,7 +11,7 @@ pre { padding: 10px 5px; }
     background: url("../images/external-link.png") no-repeat scroll right center rgba(0, 0, 0, 0);
     padding-right: 18px;
 }
-#page a.no-external-icon { background-none; padding: 0; margin: 0; }
+#page a.no-external-icon { background: none; padding: 0; margin: 0; }
 
 section { padding: 15px 0 5px; }
 section h1, section h2, section h3, section h4 { color: #236BBC; padding: 5px 0; }
@@ -30,12 +30,13 @@ section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: righ
 #gistFilterResult ul li:nth-child(odd) {background: #FFF; }
 #gistFilterResult ul li:hover { background-color: #d2d2d2; color: white; } 
 
-.gists-section { margin: 0;  margin-top: 50px; }
+.gists-section { margin: 50px 0 20px; }
 .gists-section .gist { margin: 0 auto; transition: background-color 1.5s ease 0s; background-color: white; padding: 10px; min-width: 750px; border-bottom: 2px solid #d2d2d2; position: relative; }
 .gists-section .gist:hover { background-color: #DCDCDC; }
 .gists-section .gist .gist-description { overflow: auto; }
 .gists-section .gist h3 { border-bottom: 1px solid #d2d2d2; margin-bottom: 10px; font-size: 1.6em; }
 .gists-section .gist .gist-description ul { margin-left: 20px; }
+.gists-section .gist .gist-description ul li { margin-top: 5px; }
 .gists-section .gist .gist-description h3 { font-size: 1.3em; }
 .gists-section .gist .gist-description p, .gists-section .gist .gist-description ul { margin-bottom: 10px; }
 .gists-section .gist .gist-description div { overflow: hidden; }

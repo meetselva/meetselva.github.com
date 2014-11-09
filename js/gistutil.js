@@ -126,6 +126,13 @@ $(function () {
 			$('#gistFilter').val('');//clear value
 		}
 	});
+	
+	$('#page').on('click', 'a[href^="http"]', function (e) {
+		if (!$(this).hasClass('.no-external-icon')) {
+			e.preventDefault();
+			window.open(this.href, "_blank", '');
+		}
+	});
 });
 function target_popup(form) {
     window.open('', 'formpopup', 'width=1000,height=500,scrollbars=yes, menubar=no,location=yes,status=0,resizable=yes, toolbar=no');
