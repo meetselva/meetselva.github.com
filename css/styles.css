@@ -43,6 +43,8 @@ section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: righ
 .gists-section .gist .gist-launch { padding: 10px; margin-top: 10px; border-top: 1px solid #d2d2d2; text-align: right; }
 .gists-section .gist .gist-launch .launch-button { margin-left: 10px; }
 
+.disqus { margin: 20px 0; padding: 5px 10px;}
+
 .ieLT9warning { border-bottom: 1px solid #a29330; color: #000; font-size: 0.9em; padding: 5px; text-align: center; background-color: rgb(254, 238, 189); }
 
 .loadingMsg { position: relative; }
