@@ -3,7 +3,7 @@
  **/
 var gistList = {
 		attrchange: {
-			title: "AttrChange - a jQuery plugin",
+			title: '<a href="#"><img src="images/attrchange.png" alt="attrchange" /></a>',
 			lookupTitle: "jQuery attrchange plugin",
 			lookupTags: ["Selvakumar", "Arumugam", "meetselva", "attrchange"],
 			descriptionHTML: "gist/attrchange-gist.html",

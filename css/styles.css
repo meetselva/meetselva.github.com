@@ -1,4 +1,4 @@
-html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.4em; /*letter-spacing: 0.5px;*/ }
+html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.8em; letter-spacing: 0.2px; }
 html, body, form, ul, li, p, h1, h2, h3, img { margin: 0; padding: 0; border: 0; }
 sub { font-weight: normal; font-size: 0.7em; margin-left: 5px; }
 input, select { width: auto; color: #777; font-size: 1em; }
@@ -6,7 +6,7 @@ a, a:hover, a:visited { color: #236BBC; text-decoration: none; }
 pre, code { background-color: #F0F8FF; padding: 0 5px; }
 pre { padding: 10px 5px; }
 
-#page { padding: 10px 15px; margin: 0; }
+#page { padding: 0 15px; margin: 0; }
 #page a[href^="http"] {
     background: url("../images/external-link.png") no-repeat scroll right center rgba(0, 0, 0, 0);
     padding-right: 18px;
@@ -15,10 +15,10 @@ pre { padding: 10px 5px; }
 
 section { padding: 15px 0 5px; }
 section h1, section h2, section h3, section h4 { color: #236BBC; padding: 5px 0; }
-section.header { border-bottom: 1px solid #d2d2d2; padding-bottom: 1px; left: 0; position:fixed; top:0; width:100%; background-color: white; z-index: 1001; }
+section.header { border-bottom: 1px solid #d2d2d2; padding: 0 10px; left: 0; position:fixed; top:0; width:100%; background-color: white; z-index: 1001; }
 section.header h1 { font-size: 2em; padding-left: 10px; }
-section.header .nav_links { text-align: right; float: right; width: 30%; padding-top: 2px; } 
-section.header a.nav { padding: 0 15px; border-right: 1px solid #d2d2d2; }
+section.header .nav_links { text-align: right; float: right; width: 30%; padding: 25px 10px; } 
+section.header a.nav { padding: 0 15px; }
 section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: right; border-top: 1px solid #d2d2d2; padding: 5px 0; left: 0; position:fixed; bottom:0; width:100%; background-color: white; }
 
 .gist-filter { float: right; width: 22%; text-align: right; font-weight: bold; padding-right: 15px; min-width: 300px; }
@@ -30,11 +30,11 @@ section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: righ
 #gistFilterResult ul li:nth-child(odd) {background: #FFF; }
 #gistFilterResult ul li:hover { background-color: #d2d2d2; color: white; } 
 
-.gists-section { margin: 50px 0 20px; }
+.gists-section { margin: 80px 0 20px; }
 .gists-section .gist { margin: 0 auto; transition: background-color 1.5s ease 0s; background-color: white; padding: 10px; min-width: 750px; border-bottom: 2px solid #d2d2d2; position: relative; }
 .gists-section .gist:hover { background-color: #DCDCDC; }
 .gists-section .gist .gist-description { overflow: auto; }
-.gists-section .gist h3 { border-bottom: 1px solid #d2d2d2; margin-bottom: 10px; font-size: 1.6em; }
+.gists-section .gist h3 { border-bottom: 1px solid #d2d2d2; margin-bottom: 10px; font-size: 1.4em; }
 .gists-section .gist .gist-description ul { margin-left: 20px; }
 .gists-section .gist .gist-description ul li { margin-top: 5px; }
 .gists-section .gist .gist-description h3 { font-size: 1.3em; }
