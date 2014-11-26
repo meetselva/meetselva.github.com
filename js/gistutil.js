@@ -13,6 +13,7 @@ var gistutil = {
 				$('.gists-section').html(gistutil.gistUI.join(""));
 				$('.launch-button').button();
 			}
+			afterGistLoaded();
 		});
 	},
 	initiateBuilder: function (gistArray, callback) {
@@ -128,13 +129,28 @@ $(function () {
 	});
 	
 	$('#page').on('click', 'a[href^="http"]', function (e) {
-		if (!$(this).hasClass('.no-external-icon')) {
+		if (!$(this).hasClass('no-external-icon')) {
 			e.preventDefault();
 			window.open(this.href, "_blank", '');
 		}
-	});
+	});	
 });
 function target_popup(form) {
     window.open('', 'formpopup', 'width=1000,height=500,scrollbars=yes, menubar=no,location=yes,status=0,resizable=yes, toolbar=no');
     form.target = 'formpopup';
+}
+
+function afterGistLoaded () {
+	$('#aboutme_link').click (function () {
+		if ($(document).scrollTop() == 0) {
+			$('#meetselva').slideToggle();
+		} else {
+			$("html, body").animate({ scrollTop: 0}, 200);
+			setTimeout(function () { $('#meetselva').slideDown(); }, 400);
+		}
+	});
+	
+	$('.showDetailsLink').click (function () {
+		$(this).parent().find('.details').slideToggle();
+	});
 }

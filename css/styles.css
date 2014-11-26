@@ -1,4 +1,4 @@
-html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.8em; letter-spacing: 0.2px; }
+html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.6em; letter-spacing: 0.2px; }
 html, body, form, ul, li, p, h1, h2, h3, img { margin: 0; padding: 0; border: 0; }
 sub { font-weight: normal; font-size: 0.7em; margin-left: 5px; }
 input, select { width: auto; color: #777; font-size: 1em; }
@@ -18,7 +18,8 @@ section h1, section h2, section h3, section h4 { color: #236BBC; padding: 5px 0;
 section.header { border-bottom: 1px solid #d2d2d2; padding: 0 10px; left: 0; position:fixed; top:0; width:100%; background-color: white; z-index: 1001; }
 section.header h1 { font-size: 2em; padding-left: 10px; }
 section.header .nav_links { text-align: right; float: right; width: 30%; padding: 25px 10px; } 
-section.header a.nav { padding: 0 15px; }
+section.header a.nav { padding: 5px 15px; }
+section.header a.nav.selected { border-bottom: 2px solid orange; }
 section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: right; border-top: 1px solid #d2d2d2; padding: 5px 0; left: 0; position:fixed; bottom:0; width:100%; background-color: white; }
 
 .gist-filter { float: right; width: 22%; text-align: right; font-weight: bold; padding-right: 15px; min-width: 300px; }
@@ -64,3 +65,7 @@ section.footer { font-size: 0.917em; color: rgb(102, 102, 102); text-align: righ
 
 a.hl_links { color: #236BBC; font-weight: bold; text-decoration: none; text-shadow: none; transition: text-shadow 0.5s ease 0s; }
 a.hl_links:hover { text-shadow: 0 0 2px #FD9DE2; transition: text-shadow 0.5s ease 0s; }
+
+.showDetailsLink { font-size: 0.9em; letter-spacing: normal; }
+
+#meetselva { display: none; }

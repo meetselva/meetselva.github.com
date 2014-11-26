@@ -7,38 +7,58 @@
 		<div style="float: left; width: 75%; padding: 10px;">
 			<p>
 			<a target="_new" class="hl_links" href="https://github.com/meetselva/attrchange/" >attrchange</a> is a simple jQuery plugin to bind a 
-			listener function on attribute change of an element. The handler function is triggered when an attribute is added, removed or modified to the element.
+			listener function on an element's attribute change. The handler function is triggered when an attribute is added, removed or modified to the element.
 			</p>
 			<p>
-				This plugin utilizes different DOM events API's (Mutation Observer / DOMAttrModified / onpropertychange) to detect attribute changes.
+				This plugin utilizes different API's (Mutation Observer / DOMAttrModified / onpropertychange) to detect attribute changes.
 			</p>
 			<p>
-				The main goal of this plugin is to provide cross browser compliant solution to handle DOM changes. 
-				The plugin bundles with three different techniques and  chooses the best supported technique to effectively trigger the handler. 
+				The main goal of this plugin is to provide cross browser compliant solution to handle DOM changes. The plugin bundles with three different techniques and  chooses the best supported technique to effectively trigger the handler. 
 			</p>
 			<h3>Features</h3>
 			<ul>
 				<li>Cross browser support</li>
 				<li>Compact and light weight</li>
-				<li>Utilizies DOM Events API to detect Attribute Changes</li>
+				<li>Utilizies DOM API to detect Attribute Changes</li>
 				<li>New Disconnect feature allows to disconnect the handler</li>
 				<li>Support for Extensions</li>
 			</ul>			
-		</div>		
+		</div>
 		<div class="note" style="float: right; width: 18%; margin: 0 5px; padding: 10px; min-height: 140px;">
 			<div style="padding-bottom: 10px; text-align: left;">
 			<iframe width="90px" height="20px" frameborder="0" scrolling="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=meetselva&repo=attrchange&type=watch&count=true"></iframe>
 			<iframe width="90px" height="20px" frameborder="0" scrolling="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=meetselva&repo=attrchange&type=fork&count=true"></iframe>
 			</div>
-			<div><div class="boldtext">License: </div><a href="https://github.com/meetselva/attrchange/blob/master/MIT-License.txt" class="">MIT License</a></div> 
-			<div><div class="boldtext">Demo and Documentation: </div><a href="http://meetselva.github.com/attrchange/" class="">http://meetselva.github.com/attrchange/</a></div>
-			<div><div class="boldtext">Release: </div><a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0" class="">AttrChange 2.0 (May 17 2014)</a></div>
-			<div><div class="boldtext">Feedback & Issues: </div><a href="https://github.com/meetselva/attrchange/issues" class="">https://github.com/meetselva/attrchange/issues</a></div>
-			<div><div class="boldtext">Download: </div><a href="https://github.com/meetselva/attrchange/archive/master.zip" class="">Zip Download</a></div>
+			<div><div class="boldtext">License: </div><a href="https://github.com/meetselva/attrchange/blob/master/MIT-License.txt">MIT License</a></div> 
+			<div><div class="boldtext">Demo and Documentation: </div><a href="http://meetselva.github.com/attrchange/">http://meetselva.github.com/attrchange/</a></div>
+			<div><div class="boldtext">Release: </div><a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 (Nov 25 2014)</a></div>
+			<div><div class="boldtext">Feedback & Issues: </div><a href="https://github.com/meetselva/attrchange/issues">https://github.com/meetselva/attrchange/issues</a></div>
+			<div><div class="boldtext">Download: </div><a href="https://github.com/meetselva/attrchange/archive/2.0.1.zip">Zip Download</a></div>
 		</div> 
 		<div style="clear:both;"></div>
 	</div>
-	<div style="padding: 10px;">
+	<div style="padding: 0 10px;">
+		<h3>Extensions</h3>
+		<p>
+			Extensions are simple independent modules outside the core plugin code that performs a specific function. Following extensions are added to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,			 
+		</p>
+		<ul>
+			<li>
+				<span class="boldtext">Polling</span> <a href="javascript: void(0)" class="showDetailsLink">details</a>
+				<!-- div class="details" style="display: none; border 1px solid #d2d2d2; padding: 10px; background-color: #F0F8FF; ">
+					<p>
+						Polling utilizes setInterval to monitor attribute changes. Now there are few pros and cons in this method which will be discussed in the later sections.
+					</p>
+					<ul>
+						<li></li>
+					</ul>
+				</div> -->
+			</li>
+			<li><span class="boldtext">Disconnect</span></li>
+			<li><span class="boldtext">Reconnect</span></li>
+			<li><span class="boldtext">Remove</span></li>
+			<li><span class="boldtext">Get Properties</span></li>
+		</ul>
 		<h3>Usage</h3>
 		<pre>
 $([selector]).attrchange({

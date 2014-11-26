@@ -13,11 +13,6 @@
 <!--[if lt IE 9 ]> <script type="text/javascript"> var html5Elem = ['header', 'nav', 'menu', 'section', 'article', 'aside', 'footer']; for (var i = 0; i < html5Elem.length; i++){ document.createElement(html5Elem[i]); } </script> <![endif]-->
 </head>
 <body>
-<!--[if lte IE 8]>
-<div class="ieLT9warning">
-	Your browser is <b>out of date</b>. It has known <b>security flaws</b> and may <b>not display all features</b> of this and other websites. 
-</div>
-<![endif]-->
 <div id="page">
 	<section class="header">
 		<div>
@@ -27,14 +22,15 @@
 				</h1>
 			</div>
 			<!-- div class="gist-filter">Jump: <input type="text" id="gistFilter" /></div> -->			
-			<div class="nav_links">
-				<a class="hl_links nav" href="javascript: void(0)" style="text-decoration: none;">Projects</a>
-				<!-- a class="hl_links nav" href="javascript: void(0)" style="text-decoration: none;">About</a> -->
+			<div class="nav_links" style="display: none;">
+				<!-- a class="hl_links nav projects" href="javascript: void(0)" style="text-decoration: none;">Projects</a> -->
+				<a class="hl_links nav" id="aboutme_link" href="javascript: void(0)" style="text-decoration: none; padding-right: 20px;">About meetselva</a>
 			</div>			
 			<div style="clear:both;"></div>
 		</div>	
-	</section>	
-	<section class="gists-section"></section>
+	</section>
+	<div style="padding: 10px; border: 1px solid #d2d2d2; margin-top: 80px; background-color: #FCEFA1;"><span class="boldtext">Important Message:</span> This Web Page is currently being updated with the latest release information. Feel free to drop a comment or feedback at <a class="no-external-icon" href="#disqus">http://meetselva.github.io/#disqus</a> or report an issue at <a href="https://github.com/meetselva/attrchange/issues">https://github.com/meetselva/attrchange/issues</a>  </div>
+	<section class="gists-section" style="margin-top: 0;"></section>
 	<section class="disqus" id="disqus">
 	    <div id="disqus_thread"></div>
 	    <script type="text/javascript">
