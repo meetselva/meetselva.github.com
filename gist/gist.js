@@ -10,7 +10,7 @@ var gistList = {
 		launchURL: null
 	},
 	attrchange: {
-		title: '<a href="#"><img src="images/attrchange.png" alt="attrchange" /></a>',
+		title: 'attrchange - a jQuery plugin',
 		lookupTitle: "jQuery attrchange plugin",
 		lookupTags: ["Selvakumar", "Arumugam", "meetselva", "attrchange"],
 		descriptionHTML: "gist/attrchange-gist.html",

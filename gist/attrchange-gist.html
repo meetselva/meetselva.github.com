@@ -8,18 +8,20 @@
 			<p>
 			<a target="_new" class="hl_links" href="https://github.com/meetselva/attrchange/" >attrchange</a> is a simple jQuery plugin to bind a 
 			listener function on an element's attribute change. The handler function is triggered when an attribute is added, removed or modified to the element.
-			</p>
+			</p>			
 			<p>
 				This plugin utilizes different API's (Mutation Observer / DOMAttrModified / onpropertychange) to detect attribute changes.
 			</p>
 			<p>
 				The main goal of this plugin is to provide cross browser compliant solution to handle DOM changes. The plugin bundles with three different techniques and  chooses the best supported technique to effectively trigger the handler. 
 			</p>
+			<div class="note" style="padding: 5px 10px; margin: 15px 0;">Check out extensions for more awesome features included to the plugin.</div>
 			<h3>Features</h3>
 			<ul>
 				<li>Cross browser support</li>
 				<li>Compact and light weight</li>
-				<li>Utilizies DOM API to detect Attribute Changes</li>
+				<li>Utilizes DOM API to detect Attribute Changes</li>
+				<li>Polling added as an Extension to the Plugin</li>
 				<li>New Disconnect feature allows to disconnect the handler</li>
 				<li>Support for Extensions</li>
 			</ul>			
@@ -40,25 +42,38 @@
 	<div style="padding: 0 10px;">
 		<h3>Extensions</h3>
 		<p>
-			Extensions are simple independent modules outside the core plugin code that performs a specific function. Following extensions are added to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,			 
+			Extensions are simple independent modules added to the core plugin code that performs a specific function. Following features added as extension to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,			 
 		</p>
-		<ul>
-			<li>
-				<span class="boldtext">Polling</span> <a href="javascript: void(0)" class="showDetailsLink">details</a>
-				<!-- div class="details" style="display: none; border 1px solid #d2d2d2; padding: 10px; background-color: #F0F8FF; ">
-					<p>
-						Polling utilizes setInterval to monitor attribute changes. Now there are few pros and cons in this method which will be discussed in the later sections.
-					</p>
-					<ul>
-						<li></li>
-					</ul>
-				</div> -->
-			</li>
-			<li><span class="boldtext">Disconnect</span></li>
-			<li><span class="boldtext">Reconnect</span></li>
-			<li><span class="boldtext">Remove</span></li>
-			<li><span class="boldtext">Get Properties</span></li>
-		</ul>
+		<table class="plugin-table" style="width: 800px;">
+			<thead>
+			<tr>
+				<th style="width:20%; text-align: left;">Extension Name</th>
+				<th style="text-align: left;">Description</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;">Polling</td>
+					<td style="text-align: left;"></td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Disconnect</td>
+					<td style="text-align: left;"></td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Remove</td>
+					<td style="text-align: left;"></td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Reconnect</td>
+					<td style="text-align: left;"></td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">GetProperties</td>
+					<td style="text-align: left;"></td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Usage</h3>
 		<pre>
 $([selector]).attrchange({
