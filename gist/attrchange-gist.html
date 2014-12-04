@@ -7,16 +7,21 @@
 		<div style="float: left; width: 75%; padding: 10px;">
 			<p>
 			<a target="_new" class="hl_links" href="https://github.com/meetselva/attrchange/" >attrchange</a> is a simple jQuery plugin to bind a 
-			listener function on an element's attribute change. The handler function is triggered when an attribute is added, removed or modified to the element.
+			listener function when an element's attribute is added, removed or modified. The handler function is called when an attribute change is detected. The event object passed to the handler function will have the changed attribute details.
 			</p>			
 			<p>
-				This plugin utilizes different API's (Mutation Observer / DOMAttrModified / onpropertychange) to detect attribute changes.
+				The plugin uses one of the following compatible methods based on the browser to detect an attribute change,
 			</p>
+			<ul>
+				<li>Mutation Observer</li>
+				<li>DOMAttrModified</li>
+				<li>onpropertychange</li>
+    		</ul>
 			<p>
-				The main goal of this plugin is to provide cross browser compliant solution to handle DOM changes. The plugin bundles with three different techniques and  chooses the best supported technique to effectively trigger the handler. 
+				The main goal of this plugin is to provide cross browser compliant solution to handle DOM attribute changes. The plugin chooses the best supported technique to effectively trigger the handler
 			</p>
 			<div class="note" style="padding: 5px 10px; margin: 15px 0;">Check out extensions for more awesome features included to the plugin.</div>
-			<h3>Features</h3>
+			<h3 id="attrchange-features">Features</h3>
 			<ul>
 				<li>Cross browser support</li>
 				<li>Compact and light weight</li>
@@ -40,41 +45,7 @@
 		<div style="clear:both;"></div>
 	</div>
 	<div style="padding: 0 10px;">
-		<h3>Extensions</h3>
-		<p>
-			Extensions are simple independent modules added to the core plugin code that performs a specific function. Following features added as extension to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,			 
-		</p>
-		<table class="plugin-table" style="width: 800px;">
-			<thead>
-			<tr>
-				<th style="width:20%; text-align: left;">Extension Name</th>
-				<th style="text-align: left;">Description</th>
-			</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td style="text-align: left;">Polling</td>
-					<td style="text-align: left;"></td>
-				</tr>
-				<tr>
-					<td style="text-align: left;">Disconnect</td>
-					<td style="text-align: left;"></td>
-				</tr>
-				<tr>
-					<td style="text-align: left;">Remove</td>
-					<td style="text-align: left;"></td>
-				</tr>
-				<tr>
-					<td style="text-align: left;">Reconnect</td>
-					<td style="text-align: left;"></td>
-				</tr>
-				<tr>
-					<td style="text-align: left;">GetProperties</td>
-					<td style="text-align: left;"></td>
-				</tr>
-			</tbody>
-		</table>
-		<h3>Usage</h3>
+		<h3 id="attrchange-usage">Usage</h3>
 		<pre>
 $([selector]).attrchange({
   trackValues: true, 
@@ -84,10 +55,82 @@ $([selector]).attrchange({
 	//event.newValue - New Value
   }
 });</pre>
-		<h3>What is in Next release?</h3>
-		<ul>
-			<li>Adding Polling technique as an extension to the plugin</li>
-			<li>Logical and Physical disconnect for easy enabling/disabling the handler</li>
-		</ul>
+		<h3 id="attrchange-extensions">Extensions</h3>
+		<p>
+			Extensions are simple independent modules added to the core plugin code that performs a specific function. Following features added as extension to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,
+			<div class="note">Note: I am working on specific examples to demonstrate the differences in each of these methods, but there are just too many to work on. Feel free to drop a suggestion/comment on how you would like to see this documentation page.</div>			 
+		</p>
+		<table class="plugin-table" style="width: 100%;">
+			<thead>
+			<tr>
+				<th style="width: 130px; text-align: left;">Extension Name</th>
+				<th style="text-align: left;">Description</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;">Polling</td>
+					<td style="text-align: left;">
+						<ul>
+							<li>New detection method that simply polls the registered element on regular interval for an attribute change. If a change is detected, the handler is triggered with the change details,</li>
+							<li>
+								Supports 2 types of polling,
+								<ul>
+									<li><span class="boldtext">Normal Polling:</span> Normal polling is simple and straight forward where the attribute state is recorded and compared on regular intervals. If a change is detected, then the handler is triggered</li>
+									<li><span class="boldtext">Computed Polling:</span> Computed polling is specialized just for style** attribute change. An input style (list of style property to monitor) is required for computed polling. This method records the computed style value based on the input and compares the input style property on regular interval. If a change is detected, then the handler is triggered </li>
+								</ul>
+							</li>
+							<li>
+								Normal Polling is an efficient alternative for the DOM detection method available in the core plugin. This method is very useful in scenarios where we don't want the handler to be called for every attribute change instead we would like to monitor the change every X seconds/minutes/hours.
+							</li>
+							<li>
+								Computed Polling is built to capture the missing piece in DOM detection and Normal Polling methods. This method is specifically created to monitor style property changes. The DOM detection methods and the Normal Polling method fails when a style property such as height/width is changed because of a browser resizing or by a content change. This method detects the change by comparing the computed value of the property to detect the change in value.
+							</li>
+						</ul>						
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Disconnect</td>
+					<td style="text-align: left;">
+						<ul>
+							<li>Disconnect prevents calling the handler function when an attribute is modified</li>
+							<li>
+								Supports 2 type of disconnect,
+								<ul>
+									<li><span class="boldtext">Logical Disconnect: </span>disconnect the handler function temporarily and allows to reconnect anytime using "reconnect" function</li>
+									<li><span class="boldtext">Physical Disconnect: </span>disconnects the handler function permanently. This is same as remove where the attrchange is removed</li>
+								</ul>
+							</li>
+							<li>
+								Logical Disconnect is useful in disabling the attrchange handler on a certain condition and later reconnect when required
+							</li>
+							<li>
+								Physical Disconnect is useful in disabling the attrchange handler after a specific condition is satisfied and no longer wish to monitor attribute change
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Remove</td>
+					<td style="text-align: left;">Stops monitoring attrchange on the selected element</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Reconnect</td>
+					<td style="text-align: left;">Reconnect a disconnect logical connection. The Logical Disconnect and Reconnect is like stopping and restarting the service</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">GetProperties</td>
+					<td style="text-align: left;">
+						This method returns an object with useful information about the plugin. Following are the information returned,
+						<ul>
+							<li><span class="boldtext">method: </span>Returns a String information about the method that is used to detect an attribute change. It should be one of the values in ['propertychange', 'DOMAttrModified', 'Mutation Observer', 'polling']</li>
+							<li><span class="boldtext">isPolling: </span>Returns a Boolean. True if the selected method is polling, else returns false</li>
+							<li><span class="boldtext">pollingInterval: </span>Returns an integer value of the polling interval</li>
+							<li><span class="boldtext">status: </span>Returns a String information about the current connection status. It should be one of the values in ['connected', 'disconnected', 'removed']</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
