@@ -134,6 +134,8 @@ $(function () {
 			window.open(this.href, "_blank", '');
 		}
 	});	
+	
+	$('#blockui').css('height', $(window).height());
 });
 function target_popup(form) {
     window.open('', 'formpopup', 'width=1000,height=500,scrollbars=yes, menubar=no,location=yes,status=0,resizable=yes, toolbar=no');
@@ -153,4 +155,27 @@ function afterGistLoaded () {
 	$('.showDetailsLink').click (function () {
 		$(this).parent().find('.details').slideToggle();
 	});
+	
+	$('.betaWarning').click (function () {
+		showInfoBox('<span class="ui-icon ui-icon-notice ui-icon-animate"></span>basic testing is complete, but the code is still new. So use it with caution!', true, 50000);
+	});
+}
+
+function showInfoBox(msg, autoHide, duration) {
+	$('#info-boxMsg').html(msg);
+	var $infoBox = $('#info-box'),
+	    $window = $(window);
+	$infoBox.stop(true, true).css({
+		'top':Math.abs((($window.height() - $infoBox.outerHeight()) / 2) + $window.scrollTop()),
+	    'left':Math.abs((($window.width() - $infoBox.outerWidth()) / 2) + $window.scrollLeft())
+	}).slideDown();
+	if (autoHide ){
+		setTimeout(function () {
+			$('#info-box').slideUp(500);
+		}, (duration)?duration:2000);
+	}
+}
+
+function hideInfoBox() {
+	$('#info-box').slideUp();
 }

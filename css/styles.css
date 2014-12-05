@@ -2,7 +2,7 @@ html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; li
 html, body, form, ul, li, p, h1, h2, h3, img { margin: 0; padding: 0; border: 0; }
 sub { font-weight: normal; font-size: 0.7em; margin-left: 5px; }
 input, select { width: auto; color: #777; font-size: 1em; }
-a, a:hover, a:visited { color: #4285F4; text-decoration: none; }
+a, a:hover, a:visited { color: #4A719C; text-decoration: none; }
 pre, code { background-color: #C2D9EC; border: 1px solid #FCEFA1; padding: 10px 15px; }
 code { padding: 2px 5px; border: none; }
 
@@ -61,3 +61,21 @@ a.hl_links:hover { text-shadow: 0 0 2px #5890CE; transition: text-shadow 0.5s ea
 .showDetailsLink { font-size: 0.9em; letter-spacing: normal; }
 
 #meetselva { display: none; }
+
+.ui-icon, .ui-widget-content .ui-icon { background-image: url("images/ui-icons_454545_256x240.png"); display: inline-block; }
+.ui-icon-notice { background-position: -32px -142px; }
+.ui-icon.ui-icon-animate {
+	background-position: 0 0;
+  -webkit-animation: icon_animate 5s linear 0s infinite alternate;
+     -moz-animation: icon_animate 5s linear 0s infinite alternate;
+       -o-animation: icon_animate 5s linear 0s infinite alternate;
+          animation: icon_animate 5s linear 0s infinite alternate;	
+}
+@-webkit-keyframes icon_animate { from { background-position: 0; } to { background-position: 0px -222px; }  }
+   @-moz-keyframes icon_animate { from { background-position: 0; } to { background-position: 0px -222px; }  }
+     @-o-keyframes icon_animate { from { background-position: 0; } to { background-position: 0px -222px; }  }
+        @keyframes icon_animate { from { background-position: 0; } to { background-position: 0px -222px; }  }
+
+#info-box { position: absolute; top: 0; text-align: center; width: 98%; display: none; z-index: 1020; }
+#info-boxMsg { font-size: 1.2em; display: inline-block; overflow:hidden; background-color: white; padding: 10px; color: #4A719C; } 
+#blockui { z-index: 1001; opacity: 0.25; background-color: #7d7d7d; width: 100%; position: absolute; top: 0px; left: 0px; display: none;  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";}
