@@ -1,4 +1,4 @@
-html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.6em; letter-spacing: 0.2px; background-color: white; }
+html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; line-height: 1.6em; letter-spacing: 0.2px; background-color: white; overflow:visible; }
 html, body, form, ul, li, p, h1, h2, h3, img { margin: 0; padding: 0; border: 0; }
 sub { font-weight: normal; font-size: 0.7em; margin-left: 5px; }
 input, select { width: auto; color: #777; font-size: 1em; }
