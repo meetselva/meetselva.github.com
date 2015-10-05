@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html class="background-animate">
 <head>
 <meta charset="utf-8"> 
 <title>meetselva</title>
 <link rel="shortcut icon" href="images/favicon.ico">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-eggplant.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="gist/gist.js"></script>
 <script type="text/javascript" src="js/gistutil.js"></script>
+<script>
+	/*var interval = setInterval(function () {
+		var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.round(Math.random() * 15)];
+        }
+        console.log('called ' + color);
+		$('html').css('backgroundColor', color);
+	}, 11000);*/
+</script>
 <!--[if lt IE 9 ]> <script type="text/javascript"> var html5Elem = ['header', 'nav', 'menu', 'section', 'article', 'aside', 'footer']; for (var i = 0; i < html5Elem.length; i++){ document.createElement(html5Elem[i]); } </script> <![endif]-->
 </head>
 <body>
-<div id="page">
-	<section class="header" style="height: 40px; overflow: hidden;">
+<section class="topnav">
+	<ul class="topnav-links">
+		<li><!-- 
+			 --><a href="javascript: void(0);">Projects</a><!-- 
+			 --><ul class="topnav-subnav"><!-- 
+				 --><li><a href="#gist-section-attrchange">attrchange</a></li><!--
+				 --><li><a href="#gist-section-attrchangeExtension">attrchange extension</a></li><!--
+				 --><li><a href="#gist-section-fixedtable">fixed table</a></li><!-- 
+			 --></ul><!-- 
+		 --></li><!-- 
+		 --><li><a href="https://github.com/meetselva">Github</a></li><!-- 
+		 --><li onclick="$('#gist-section-meetselva').closest('.gist').slideToggle();"><a href="javascript:void(0)">About</a></li><!-- 
+	 --></ul>
+</section>
+<div id="page">	
+	<!--  section class="header" style="height: 40px; overflow: hidden;">
 		<a class="hl_links" href="index.html" style="text-decoration: none;"><img src="images/meetselva-banner.png" style="width: 100%;" /></a>
-	</section>	
+	</section -->	
 	<section class="gists-section" style="margin-top: 0;"></section>
 	<section class="disqus" id="disqus">
 	    <div id="disqus_thread"></div>

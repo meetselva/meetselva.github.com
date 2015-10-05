@@ -1,0 +1,148 @@
+<div>	
+	<div style="padding: 0 10px;">
+		<p>Extensions are simple independent modules added to the core plugin code that performs a specific function. Following features added as extension to <a href="https://github.com/meetselva/attrchange/releases/tag/2.0.0">v2.0.1 release</a>,</p>
+<h4 id="attrchange-extn-usage" style="margin: 10px 0 0; padding: 0;">Usage</h4>
+<pre>
+$([selector]).<span style="font-weight: bold;">attrchange</span>([extn-name], [extn-options]);
+<span style="color: #929292;">//[extn-name]    - Extension Name
+//[extn-options] - Options/Properties to the extension</span>
+</pre>
+		<div id="attrchange-extensions" class="ui-accordion ui-widget ui-helper-reset">
+		    <h4 class="ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">Polling</h4>
+		    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+				<p>Polling is an alternative method that simply polls the registered element on regular interval for an attribute change. If a change is detected, the handler is triggered with the change details.</p>
+		        <ul class="attrchange-extn-desc">
+					<li>
+						Supports 2 types of polling,
+						<ul>
+							<li><span class="boldtext">Normal Polling:</span> Normal polling is simple and straight forward where the attribute state is recorded and compared on regular intervals. If a change is detected, then the handler is triggered</li>
+							<li><span class="boldtext">Computed Polling:</span> Computed polling is specialized just for style** attribute change. An input style (list of style property to monitor) is required for computed polling. This method records the computed style value based on the input and compares the input style property on regular interval. If a change is detected, then the handler is triggered </li>
+						</ul>
+					</li>
+					<li>
+						Normal Polling is an efficient alternative for the DOM detection method available in the core plugin. This method is very useful in scenarios where we don't want the handler to be called for every attribute change instead we would like to monitor the change every X seconds/minutes/hours.
+					</li>
+					<li>
+						Computed Polling is built to capture the missing piece in DOM detection and Normal Polling methods. This method is specifically created to monitor style property changes. The DOM detection methods and the Normal Polling method fails when a style property such as height/width is changed because of a browser resizing or by a content change. This method detects the change by comparing the computed value of the property to detect the change in value.
+					</li>
+				</ul>
+				<a href="javascript:void(0)" class="showPollingvsStandardMethod">See the differences between Standard Methods vs Polling</a>
+				<h3 id="attrchange-demo">Examples</h3>
+				<h4>Normal Polling</h4>
+				<div>
+					<div id="attrchange-demo01-base" class="attrchange-demo-base">			
+						<span>Example 1: An example to demonstrate how the attrchange handler function is triggered using polling when the style attribute is modified</span>					
+					</div>
+		            <iframe scrolling="no" src="http://codepen.io/meetselva/embed/JYGjop/?height=307&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%; height: 299px;">
+		            	See the Pen <a href='http://codepen.io/meetselva/pen/JYGjop/'>JYGjop</a> by Selvakumar Arumugam (<a href='http://codepen.io/meetselva'>@meetselva</a>) on <a href='http://codepen.io'>CodePen</a>.
+		            </iframe>			
+				</div>				
+<h4 id="attrchange-extn-polling-usage" style="margin: 10px 0 0; padding: 0;">Usage</h4>
+	<pre>
+<span style="color: #DDCA7E">$</span>(<span style="color: #96B38A">[selector]</span>).<span style="color: #9A8297">attrchange</span>('polling', {
+  <span style="color: #9A8297">pollingInterval</span>: <span style="color: #DDCA7E;">5000</span>, 
+  <span style="color: #9A8297">callback</span>: <span style="color: #DDCA7E;">function</span> (<span style="color: #DDCA7E;">object</span>) {<span style="color: #727272;">
+	//object[attributeName].prevValue - Prev Value
+	//object[attributeName].newValue - New Value</span>
+  }
+});</pre>
+		    </div>
+		    <h4 class="ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">Disconnect</h4>
+		    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		    	<p>Disconnect prevents calling the handler function when an attribute is modified</p>
+		        <ul>
+					<li>
+						Supports 2 type of disconnect,
+						<ul>
+							<li><span class="boldtext">Logical Disconnect: </span>disconnect the handler function temporarily and allows to reconnect anytime using "reconnect" function</li>
+							<li><span class="boldtext">Physical Disconnect: </span>disconnects the handler function permanently. This is same as remove where the attrchange is removed</li>
+						</ul>
+					</li>
+					<li>
+						Logical Disconnect is useful in disabling the attrchange handler on a certain condition and later reconnect when required
+					</li>
+					<li>
+						Physical Disconnect is useful in disabling the attrchange handler after a specific condition is satisfied and no longer wish to monitor attribute change
+					</li>
+				</ul>
+		    </div>
+		    <h4 class="ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">Reconnect</h4>
+		    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		        <p>Reconnect a disconnect logical connection. The Logical Disconnect and Reconnect is like stopping and restarting the service</p>
+		    </div>
+		    <h4 class="ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">Remove</h4>
+		    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		        <p>Stops monitoring attrchange on the selected element</p>
+		    </div>
+		    <h4 class="ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">GetProperties</h4>
+		    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		        <p>This method returns an object with useful information about the plugin. Following are the information returned,</p>
+				<ul>
+					<li><span class="boldtext">method: </span>Returns a String information about the method that is used to detect an attribute change. It should be one of the values in ['propertychange', 'DOMAttrModified', 'Mutation Observer', 'polling']</li>
+					<li><span class="boldtext">isPolling: </span>Returns a Boolean. True if the selected method is polling, else returns false</li>
+					<li><span class="boldtext">pollingInterval: </span>Returns an integer value of the polling interval</li>
+					<li><span class="boldtext">status: </span>Returns a String information about the current connection status. It should be one of the values in ['connected', 'disconnected', 'removed']</li>
+				</ul>
+		    </div>
+		</div>
+		<div id="attrchangePollingvsStandardMethod">
+		<p>The below table simply highlights the differences. Choose the one that works well for your requirement.</p>
+		<table id="attrchange-polling-vs-standard-method-table" border="0" cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th style="width: 10%;"></th>
+					<th style="width: 45%;">Standard Methods</th>
+					<th style="width: 45%;">Polling</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="boldtext">Definition</td>
+					<td>Browser standard method are the API's available for reacting to DOM changes</td>
+					<td>Polling is a programming technique used to check the status in a time interval</td> 
+				</tr>
+				<tr>
+					<td class="boldtext">API</td>
+					<td>Below are the 3 different method that are available in different browsers. Note, not all browser supports all of the below methods and the plugin chooses the best supported method.
+						<ul>
+							<li><a href="https://dom.spec.whatwg.org/#mutation-observers">Mutation Observer</a> - New Web Standard to react to changes in DOM</li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events">DOMAttrModified</a> - Now deprecated but a not so old method, but included to support older browser</li>
+							<li><a href="https://msdn.microsoft.com/en-us/library/ms536956%28v=vs.85%29.aspx">onpropertychange</a> - Deprecated IE specific method (since IE9), but included to support IE &lt; 9</li>
+				   		</ul>
+					</td>
+					<td>Polling uses native javascript timer API's  (setInterval or setTimeout) to check the status.</td> 
+				</tr>				
+				<tr>
+					<td class="boldtext">Method Highlights</td>
+					<td>
+						<ul>
+							<li>Browser triggers the plugin code only when there is a change</li>
+							<li>The handler function is triggered right away (no delay) after a change</li>
+							<li>The event object passed to the handler function has the attribute change details</li>
+							<li>The handler function knows the attribute that is changed without having to check the old and new values</li>
+							<li>The old and new value are not maintained in code. The plugin simply returns what the browser returns so the values are NOT normalized</li>
+							<li>The handler function is NOT triggered when there is a programmatic or browser changes. For ex: The handler won't be triggered if an attribute is programmatically added to an element or if the browser is resized and that shrinks the width of a div</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>The plugin code has an interval timer to check if there is a change</li>
+							<li>The handler function is triggered in an interval and so there is a delay in triggering the handler depending on when the change occurs</li>
+							<li>The objcet passed to the handler function has the attribute change details. Note: The object passed is NOT an event object as the handler function is triggered programmatically.</li>
+							<li>The handler function compares the old and new values each time to detect a change, the method gets complicated depending on how many attributes it has to monitor</li>
+							<li>The old and new value are maintained in code and so the values are normalized</li>
+							<li>The handler function detects all types of changes that includes programmatic changes or browser changes</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+<span class="boldtext">Extensions Usage</span>
+		<pre>
+$([selector]).<span style="font-weight: bold;">attrchange</span>([extn-name], [extn-options]);
+<span style="color: #929292;">//[extn-name]    - Extension Name
+//[extn-options] - Options/Properties to the extension</span>
+</pre>
+	</div>
+</div>

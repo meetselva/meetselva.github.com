@@ -2,130 +2,117 @@
  * Dynamic Tool creation JS 
  **/
 var gistutil = {
-	buildGistUI: function () {
+	buildGistUI: function (finalCallback) {
 		gistutil.gistUI = []; //initialize
 		var gistArray = [];
+		//var category = window.location.hash.substring(1);
 		for (var gist in gistList) {
-			gistArray.push (gist);
-		}
-		gistutil.initiateBuilder(gistArray, function () {			
-			if (gistutil.gistUI.length) {
-				$('.gists-section').html(gistutil.gistUI.join(""));
-				$('.launch-button').button();
+			/*if (category != '' && category != 'all') {
+				if (gistList[gist].category == category) {
+					gistArray.push (gist);
+				}
+				window.onhashchange = function() { //Need some clarity
+					//reload page with new hash
+					window.location.reload();
+				}
+			} else */ if (gistList[gist].mode == 'server') {
+				gistutil.gistServer.push (gist);
+			} else {
+				gistArray.push (gist);
 			}
-			afterGistLoaded();
-		});
+		}
+		
+		gistutil.gistList = gistArray.slice(0); //final list
+		gistutil.initiateBuilder(gistArray, gistutil.gistInitiateBuilderCallback, finalCallback);
 	},
-	initiateBuilder: function (gistArray, callback) {
+	gistInitiateBuilderCallback: function (finalCallback) {
+		if (gistutil.gistUI.length) {
+			$('.gists-section').append(gistutil.gistUI.join(""));
+
+			//dynamic JS injection
+			for (var i = 0; i < gistutil.gistUIScripts.length; i++ ) {
+				$("head").append(gistutil.gistUIScripts[i]);						
+			}			
+			
+			$('.gists-section').find('.qTitle').filter(function () {
+				return $(this).find('.ui-icon.ui-icon-triangle-1-e').length == 0;
+			}).prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>').next().hide();
+		}
+				
+		hideInfoBox();
+		
+		//reset for next Server Gist Download
+		gistutil.gistUI = [];
+		gistutil.gistUIScripts = [];
+		
+		if (finalCallback) { finalCallback(); }
+		
+	},
+	initiateBuilder: function (gistArray, callback, finalCallback) {
 		if (gistArray.length) {
 			var gist = gistList[gistArray[0]];
 			var xhr = $.ajax({
 				url: gist.descriptionHTML,
 				dataType: 'text',
-				success: function (result) {
+				cache: false,
+				success: function () {
 					//build gist page
-					var template = gistutil.gistTemplate;
-					var launchURLs = [];
-					for (var i = 0; gist.launchURL && (i < gist.launchURL.length); i++) {
-						launchURLs.push (gistutil.gistLaunchTemplate.replace(/{LAUNCH_URL}/, gist.launchURL[i])
-								.replace(/{LAUNCH_TITLE}/, gist.launchTitle[i]));
-					}
-					if (launchURLs.length) { //utilize full height
-						template = template.replace(/{LAUNCH_DIV}/, gistutil.gistLaunchContainer.replace(/{LAUNCH_DIV}/, launchURLs.join("")));
-					} else {
-						template = template.replace(/{LAUNCH_DIV}/, "");
-					}
-					
-					gistutil.gistUI.push(template.replace(/{GIST_ID}/, gistArray[0]).replace(/{GIST_TITLE}/, (gist.title)?gistutil.gistTitle.replace(/{TITLE}/, gist.title):"")
-							.replace(/{DESC}/, $(xhr.responseText).html()));
-					
-					//dynamic JS injection
-					if (gist.hasOwnProperty("includeJS") && gist.includeJS.length) {
-						var $head = $("head");
-						for (var i = 0; i < gist.includeJS.length; i++ ) {
-							$head.append("<script src=\"" + gist.includeJS[i] + "\" type=\"text/javascript\"></scr" + "ipt>");
-						}
-					}
+					gistutil.buildGistUICore($(xhr.responseText).html(), gist, gistArray[0]);
 				},
 				error: function (xhr, textStatus, errorThrown) {
 					console.log("error while loading gist " + gistArray[0] + " error: errorThrown");
 				},
 				complete: function () {
 					gistArray.splice(0, 1);
-					gistutil.initiateBuilder(gistArray, callback);
+					gistutil.initiateBuilder(gistArray, callback, finalCallback);
 				}
 			});
 		} else { //completion callback
-			if (callback ) { callback(); }
+			if (callback ) { callback(finalCallback); }
+		}
+	},
+	buildGistUICore: function(result, gist, gistID) {
+		//build gist page
+		var template = gistutil.gistTemplate,
+			launchURLs = [];
+		for (var i = 0; gist.launchURL && (i < gist.launchURL.length); i++) {
+			launchURLs.push (gistutil.gistLaunchTemplate.replace(/{LAUNCH_URL}/, gist.launchURL[i])
+					.replace(/{LAUNCH_TITLE}/, gist.launchTitle[i]));
+		}
+		if (!launchURLs.length) { //utilize full height
+			template = template.replace(/{LAUNCH_CSS}/, "no-launch").replace(/{LAUNCH_DIV}/, "");			
+		} else {
+			template = template.replace(/{LAUNCH_CSS}/, "").replace(/{LAUNCH_DIV}/, gistutil.gistLaunchContainer.replace(/{LAUNCH_DIV}/, launchURLs.join("")));
+		}
+		
+		gistutil.gistUI.push(template.replace(/{NAME}/gi, gist.title)
+				.replace(/{DESC}/, result).replace(/{GIST_ID}/, gistID));
+							
+		for (var i = 0; gist.hasOwnProperty("includeJS") && i < gist.includeJS.length; i++ ) {
+			gistutil.gistUIScripts.push("<script src=\"" + gist.includeJS[i] + "\" type=\"text/javascript\"></scr" + "ipt>");						
 		}
 	},
 	gistUI: null,
-	gistTemplate: '<div class="gist" id="{GIST_ID}">' + 
-						'{GIST_TITLE}' + 
+	gistList: [],
+	gistUIScripts: [],
+	gistServer: [],
+	gistTemplate: '<div class="gist {LAUNCH_CSS}" id="gist-section-{GIST_ID}">' + 
+						'<h3 id="gist-{GIST_ID}" class="gistHeader">{NAME}</h3>' + 
 						'<div class="gist-description">{DESC}</div>' +
 						'{LAUNCH_DIV}' +
 					'</div>',
-	gistTitle: '<h3>{TITLE}</h3>',
 	gistLaunchContainer: '<div class="gist-launch">' +
-							'{LAUNCH_DIV}' +
-						 '</div>',
-	gistLaunchTemplate:  '<a href="{LAUNCH_URL}" class="launch-button" target="_blank">{LAUNCH_TITLE}</a>' 						
+						'{LAUNCH_DIV}' +
+					'</div>',
+	gistLaunchTemplate:  '<a href="{LAUNCH_URL}" class="launch-button" target="_blank">{LAUNCH_TITLE}</a>',
+	gistListLITemplate: '<li><input type="checkbox" class="serverGistSelect" {CHECKED} id="gist-select-{GIST_ID}" data-gist-id="{GIST_ID}"/><label for="gist-select-{GIST_ID}" class="{LABEL_CLASS}">{TITLE}</label></li>'
 };
 
 $(function () {
-	gistutil.buildGistUI();
+	gistutil.buildGistUI(afterGistLoaded);
 	
 	$('.gists-section').on ('submit', 'form.newWebForm', function (e) {
 		target_popup(this);
-	});
-	
-	var filterLi = '<li class="goToSlide" data-index="{INDEX}">{GIST_NAME}</li>';
-	var $gistFilteeResult = $('#gistFilterResult');
-	$('#gistFilter').keyup (function () {
-		if (this.value && this.value.length >= 2) {
-			var gistKey = this.value;
-			var filterPos = $(this).offset();				
-			var results = [];
-			$gistFilteeResult.show().css({top: filterPos.top + $(this).outerHeight(), left: filterPos.left }).html("<p>Searching...</p>");
-			var index = 0;
-			var searchString;
-			for (key in gistList) {
-				searchString = (key + gistList[key].lookupTags.join("")).replace(/ /g, '').toLowerCase();
-				if (searchString.indexOf(this.value.toLowerCase().replace(/ /g, '')) >= 0) {
-					results.push (filterLi.replace(/{GIST_NAME}/, gistList[key].lookupTitle).replace(/{INDEX}/, index));
-				}
-				index++;
-			}
-			
-			if (results.length) { //found matching Gist
-				$gistFilteeResult.html("<ul>"  + results.join("") + "</ul>");
-			} else {
-				$gistFilteeResult.html("<p>No such Jump point exist :(</p>");
-			}
-		} else {
-			$gistFilteeResult.html("<p>Jump requires at least 2 letter</p>");
-		}
-	}).focus (function () {
-		$(this).keyup();
-	}).blur (function () {
-		setTimeout(function () {
-			$gistFilteeResult.hide();
-		}, 100);
-	}).keydown(function (e) {
-		if (e.which == 13) {				
-			var $li = $gistFilteeResult.find('.goToSlide');
-			if ($li.length == 1) { //just 1 slide
-				$li.click(); //trigger goToSlide
-			}
-		}
-	}).focus();
-	
-	$gistFilteeResult.on ('click', '.goToSlide', function () {
-		$gistFilteeResult.hide();
-		if (gistutil.sliderInstance) {
-			gistutil.sliderInstance.goToSlide(parseInt($(this).data('index'), 10));
-			$('#gistFilter').val('');//clear value
-		}
 	});
 	
 	$('#page').on('click', 'a[href^="http"]', function (e) {
@@ -143,22 +130,19 @@ function target_popup(form) {
 }
 
 function afterGistLoaded () {
-	$('#aboutme_link').click (function () {
-		if ($(document).scrollTop() == 0) {
-			$('#meetselva').slideToggle();
-		} else {
-			$("html, body").animate({ scrollTop: 0}, 200);
-			setTimeout(function () { $('#meetselva').slideDown(); }, 400);
-		}
-	});
-	
 	$('.showDetailsLink').click (function () {
 		$(this).parent().find('.details').slideToggle();
 	});
 	
-	$('.betaWarning').click (function () {
-		showInfoBox('<span class="ui-icon ui-icon-notice ui-icon-animate"></span>basic testing is complete, but the code is still new. So use it with caution!', true, 50000);
+	$('.view_code').click(function () {
+		$($(this).data('code-div')).slideToggle();
 	});
+
+	$('#gist-section-meetselva').closest('.gist').hide();
+
+	//reset hash
+	window.location.hash = window.location.hash;
+	
 }
 
 function showInfoBox(msg, autoHide, duration) {
